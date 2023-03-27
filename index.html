@@ -123,14 +123,14 @@
 
 
             if (e.key === "Enter" && e.key.length !== 0) {
-                if(consoleInput.value === ""){
+                if (consoleInput.value === "") {
                     return;
                 }
                 let code = consoleInput.value.trim();
                 let normalString = code;
                 code = code.split(",").join("");
 
-               
+
 
                 if (code.toLowerCase() === "c" || code.toLowerCase() === "cc") {
                     let valueToCopy;
@@ -160,11 +160,12 @@
                     consoleInput.focus()
                     return;
 
-                } else if (normalString[0].toLowerCase() === "s" ) {
-                    let numb = normalString.replace("s", "");
-                 
+                } else if (normalString[0].toLowerCase() === "s") {
+                    let numb = normalString.replace("s", "").replace("S", "");
+
+
                     if (!isNaN(numb)) {
-                        consoleInput.value = arrayTyped[arrayTyped.length-parseInt(numb)];
+                        consoleInput.value = arrayTyped[arrayTyped.length - parseInt(numb)];
                     }
                     consoleInput.focus()
                     return;
@@ -185,6 +186,16 @@
             return new Intl.NumberFormat('en-US').format(num);
         }
         consoleInput.value = "";
+
+        function p(number) {
+            var percentage = prompt("percentage");
+            var div = document.createElement("div");
+            div.classList.add("console-input-log");
+            div.innerText =  "/* " + formartNum(number) + " " + percentage + "% -> " +  formartNum(percentage * number / 100) + " */";
+            historyContainer.append(div);
+       
+            return number + (percentage * number / 100) ;
+        }
 
     </script>
 </body>
